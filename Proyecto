@@ -1,5 +1,4 @@
-
-//PROYECTO FINAL PROGRAMACION GRUPO NO.5 
+ //PROYECTO FINAL PROGRAMACION GRUPO NO.5 
 //-*-*-*-* AAP VETERINARIA *-*-*-*-
 
 //INTEGRANTES DEL GRUPO:
@@ -33,10 +32,10 @@ string EmpDesHisCli[maxrow] = {};
 void AddRecoord()
 {
 	//declaracion variables
-	char name [50];
-	char id [10];
-	char namemasc [50];
-	char telf [10];
+	char name[50];
+	char id[10];
+	char namemasc[50];
+	char telf[10];
 	char raza[50];
 	char descrip[200];
 
@@ -73,12 +72,12 @@ void AddRecoord()
 			break;
 		}
 	}
-	
+
 }
 
 // procedimiento de la funcion visualizar  todos los registros
 void ListRecord()
-{ 
+{
 	//limpiamos pantalla
 	system("cls");
 	//imprimimos texto en pantalla como titulo de la funcion (opcion)
@@ -97,9 +96,9 @@ void ListRecord()
 		{
 			counter++;
 			cout << "   " << counter << "     " << EmpID[x] << "       " << EmpName[x] << "                 " << EmpNoTelf[x] << "        " << EmpNameMasc[x] << "                " << EmpRaza[x] << "               " << EmpDesHisCli[x] << endl;
-		
+
 		}
-	} 
+	}
 	if (counter == 0)
 	{
 		//si no hay registro ingresados nos da un aviso con un mensaje 
@@ -114,50 +113,48 @@ void ListRecord()
 
 // procedimiento de la funcion buscar un registro segun ID
 void SearchRecord(string search)
+
 {
-		//limpiamos pantalla
+	//limpiamos pantalla
 	system("CLS");
 
 	//Escribimos mensaje
 	cout << "                                                     REGISTROS ACTUALES" << endl;
 	cout << "====================================================================================================================== " << endl;
 
+
+	//limpiamos pantlla
+	system("CLS");
+
+	//imprimimos un relleno que nos rive como separador
+	cout << "====================================================================================================================== " << endl;
+
+	int counter = 0;
 	for (int x = 0; x < maxrow; x++)
 	{
+
 		if (EmpID[x] == search)
 		{
-			//limpiamos pantlla
-			system("CLS");
+			//posicionamos el registro segun el ID, si existe!
+			counter++;
+			cout << " No.  |   ID   |   Nombre del propietario   |     Celular     |      Mascota      |          Raza             |     Descripccion   " << endl << "-------------------------------------------------------------------------------------------------------------------\n";
+			cout << "   " << counter << "     " << EmpID[x] << "       " << EmpName[x] << "                 " << EmpNoTelf[x] << "         " << EmpNameMasc[x] << "                " << EmpRaza[x] << "          " << EmpDesHisCli[x] << endl;
 
-			//imprimimos un relleno que nos rive como separador
-			cout << "====================================================================================================================== " << endl;
+			//detenemos
+			break;
+		}
 
-			int counter = 0;
-			for (int x = 0; x < maxrow; x++)
-			{
-				
-				if (EmpID[x] == search)
-				{
-					//posicionamos el registro segun el ID, si existe!
-					counter++;
-					cout << " No.  |   ID   |   Nombre del propietario   |     Celular     |      Mascota      |          Raza             |     Descripccion   " << endl << "-------------------------------------------------------------------------------------------------------------------\n";
-					cout << "   " << counter << "     " << EmpID[x] << "       " << EmpName[x] << "                 " << EmpNoTelf[x] << "         " << EmpNameMasc[x] << "                " << EmpRaza[x] << "          " << EmpDesHisCli[x] << endl;
-					
-					//detenemos
-					break;
-				}
-		
-			}
-			// si no hay ningun registro nos da un mensaje de aviso
-			if (counter == 0)
-			{
-				cout << "NO SE ENCONTRARON REGISTROS DEL ID!" << endl;
-			}
-
-			cout << "====================================================================================================================== " << endl;
-		} 
 	}
+	// si no hay ningun registro nos da un mensaje de aviso
+	if (counter == 0)
+	{
+		cout << "NO SE ENCONTRARON REGISTROS DEL ID!" << endl;
+	}
+
+	cout << "====================================================================================================================== " << endl;
+
 }
+
 
 // procedimiento de la funcion actualizar un registro (SE TIENEN QUE LLENAR TODOS LOS CAMPOS NUEVAMENTE)
 void UpdateRecord(string search)
@@ -193,15 +190,15 @@ void UpdateRecord(string search)
 			cout << " Servicio clinico. ";
 			cin.getline(descrip, 200);
 			EmpDesHisCli[x] = descrip;
-			
-			
-			
+
+
+
 			//detener
 			break;
 
 			//mensake 
 			cout << "ACTUALIZACION EXITOSA" << endl;
-			
+
 
 		}
 	}
@@ -219,15 +216,15 @@ void DeleteRecord(string search)
 	int counter = 0;
 
 	for (int x = 0; x < maxrow; x++)
-	{	
+	{
 		//si el ID existe en nuestro registro hace esto, elimina todo el registro
-		if (EmpID[x] == search);
+		if (EmpID[x] == search)
 		{
 			//indica la posicion (instuccion  pointer)
 			counter++;
 			EmpName[x] = "";
 			EmpID[x] = "";
-			
+
 			EmpNoTelf[x] = "";
 			EmpNameMasc[x] = "";
 			EmpRaza[x] = "";
@@ -245,7 +242,7 @@ void DeleteRecord(string search)
 	if (counter == 0)
 	{
 		cout << "EL NUMERO DE ID NO EXISTE!" << endl;
-		
+
 	}
 }
 
@@ -260,7 +257,7 @@ int main()
 
 	//limpiamos pantalla
 	system("CLS");
-	
+
 	// empezamos un ciclo condicional
 	do {
 		system("color 71");
@@ -288,7 +285,7 @@ int main()
 		//iniciamos nuestra estructura de condiciones, segun el caso hacer esto.... el caso se almacena en variable option
 		switch (option)
 		{
-		case 1: 
+		case 1:
 			//llamamos la funcion de crear un nuevo registro
 			AddRecoord();
 			//limpiamos pantalla
@@ -296,7 +293,7 @@ int main()
 			//detenemos o finalizamos el case 1
 			break;
 
-		case 2: 
+		case 2:
 			cin.ignore();
 			cout << "BUSCAR POR EL ID DEL REGISTRO>>";
 			//funcion que lee una linea entera
@@ -308,7 +305,7 @@ int main()
 			//detenemos o finalizamos la ejecucion del case 2
 			break;
 
-		case 3: 
+		case 3:
 			//al dar enter nos salta a la siguiente linea y asi no perdemos la opcion
 			cin.ignore();
 			//titulo de la opcion (funcion)
@@ -328,7 +325,7 @@ int main()
 			//detenemos el case 3
 			break;
 
-		case 4: 
+		case 4:
 			//al dar enter nos salta a la siguiente linea y asi no perdemos la opcion
 			cin.ignore();
 
@@ -336,7 +333,7 @@ int main()
 			cout << "BUSCAR POR EL ID DEL REGISTRO>>";
 
 			//funcion que lee una linea entera
-			getline(cin, EmpID); 
+			getline(cin, EmpID);
 
 			//llamamos a la funcion
 			SearchRecord(EmpID);
@@ -345,7 +342,7 @@ int main()
 			break;
 
 
-		case 5: 
+		case 5:
 
 			//llamamos a la funcion visualizar los registros
 			ListRecord();
@@ -355,7 +352,7 @@ int main()
 		}
 
 		//fin del ciclo y decimos que al precionar el "6" saldremos del programa
-	} while (option !=6);
+	} while (option != 6);
 }
 
 
